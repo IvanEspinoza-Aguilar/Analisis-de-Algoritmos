@@ -1,16 +1,26 @@
 import tkinter as tk
 
 def saludar():
-    etiqueta.config(text="Ejemplo de boton", fg="blue")
+    nombre = entrada.get().strip()
+    if not nombre:
+        nombre = "mundo"
+    lbl.config(text=f"Hola , {nombre}")
 
-ventana = tk.Tk()
-ventana.title("Mi Primera Interfaz")
-ventana.geometry("350x200")
 
-etiqueta = tk.Label(ventana, text="Bienvenido a tu aplicación", font=("Arial", 14))
-etiqueta.pack(pady=30) 
+root = tk.Tk()
+root.title("Saludar Gente")
+root.geometry("360x220")
 
-boton = tk.Button(ventana, text="Haz clic aquí", command=saludar)
-boton.pack()
+#Crear Etiquetas
+lbl = tk.Label(root, text="Hola, escribe tu nombre y apellido")
+lbl.pack(pady=30)
 
-ventana.mainloop()
+#Entrada de texto
+entrada = tk.Entry(root)
+entrada.pack(pady=5)
+
+#Creacion de boton
+btn = tk.Button(root, text="Saludar", command=saludar)
+btn.pack(pady=10)
+
+root.mainloop()
