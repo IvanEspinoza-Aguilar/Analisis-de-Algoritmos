@@ -36,4 +36,4 @@ def inicio_pruebas(tamanio_actual, incremento, tamanio_final):
         
         tamanio_actual = tamanio_actual + incremento
         
-    return tiempo_registrado, tamanio_valores_arreglos
+    return tamanio_valores_arreglos, tiempo_registrado

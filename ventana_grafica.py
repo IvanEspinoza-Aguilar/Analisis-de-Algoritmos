@@ -14,44 +14,54 @@ def pregunta_tamanio():
     generar_grafica(datos_x, datos_y)
     
 def generar_grafica(rango_x, rango_y):
+    main.pack_forget()
     global canvas_actual
     
     if canvas_actual:
         canvas_actual.get_tk_widget().destroy()
         
-    figura = Figure(figsize=(6, 4), dpi=100)
+    figura = Figure(figsize=(9, 6), dpi=100)
     plano = figura.add_subplot(111)
     plano.plot(rango_x, rango_y, marker='o', color='red')
+    #plano.plot(rango_x2, rango_y2, market='0', color='blue')
+    
+    plano.legend(['Bubble sort'])
     
     plano.set_title("Big O de el algoritmo de ordenamiento burbuja")
-    plano.set_xlabel("Tiempo de ejecucion")
-    plano.set_ylabel("Elementos del arreglo")
+    plano.set_xlabel("Tamaño de n")
+    plano.set_ylabel("Tiempo que tomado de cada ejecucion")
 
-    canvas = FigureCanvasTkAgg(figura, master=root)
-    canvas.draw()
+    canvas_actual = FigureCanvasTkAgg(figura, master=root)
+    canvas_actual.draw()
     
-    canvas.get_tk_widget().pack(pady=10)
+    canvas_actual.get_tk_widget().pack(pady=10)
 
 root = tk.Tk()
+main = tk.Frame(root)
+main.configure(bg="#ffffff")
+
+root.configure(bg="#ffffff")
 root.title("Vista de big O")
 root.geometry("900x600")
 
-lbl = tk.Label(root, text="Vista de big O \n para el algoritmo \n de ordenamiento burbuja graficado")
+lbl = tk.Label(root, text="Vista de big O graficado", fg="#ff0404")
+lbl.configure(bg="#ffffff")
 lbl.pack(pady=30)
 
-tk.Label(root, text="Ingrese el tamaño inicial del arreglo:").pack(pady=5)
-tamanio_inicial = tk.Entry(root)
+tk.Label(main, text="Ingrese el tamaño inicial del arreglo:", bg="#ffffff", fg="#0408ff").pack(pady=5)
+tamanio_inicial = tk.Entry(main)
 tamanio_inicial.pack(pady=5)
 
-tk.Label(root, text="Ingrese el incremento:").pack(pady=5)
-incremento = tk.Entry(root)
+tk.Label(main, text="Ingrese el incremento:", bg="#ffffff", fg="#0408ff").pack(pady=5)
+incremento = tk.Entry(main)
 incremento.pack(pady=5)
 
-tk.Label(root, text="Ingrese el tamaño final del arreglo:").pack(pady=5)
-tamanio_final = tk.Entry(root)
+tk.Label(main, text="Ingrese el tamaño final del arreglo:", bg="#ffffff", fg="#0408ff").pack(pady=5)
+tamanio_final = tk.Entry(main)
 tamanio_final.pack(pady=5)
 
-btn = tk.Button(root, text="Enviar datos a generar", command=pregunta_tamanio)
+btn = tk.Button(main, text="Enviar datos a generar", command=pregunta_tamanio)
 btn.pack(pady=10)
 
+main.pack(pady=20)
 root.mainloop()
