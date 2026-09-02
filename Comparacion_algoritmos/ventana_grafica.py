@@ -1,8 +1,8 @@
 import tkinter as tk
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-from Comparacion_algoritmos.bubble_sort_mejorado import inicio_pruebas
-from Comparacion_algoritmos.selection_sort import inicio_pruebas_sel
+from bubble_sort_mejorado import inicio_pruebas
+from selection_sort import inicio_pruebas_sel
 
 canvas_actual = None
 

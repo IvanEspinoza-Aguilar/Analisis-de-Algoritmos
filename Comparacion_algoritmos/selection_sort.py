@@ -1,5 +1,5 @@
 import time
-from Comparacion_algoritmos.generador_arreglos import generador_arreglo
+from generador_arreglos import generador_arreglo
 
 def selection_sort(arr):
     n = len(arr)
